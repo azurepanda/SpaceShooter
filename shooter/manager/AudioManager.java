@@ -1,4 +1,4 @@
-package shooter;
+package manager;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,5 +40,35 @@ public class AudioManager implements Runnable{
 		if(clip == null || !clip.isRunning()){
 			newSong();
 		}		
+	}
+	
+	public void playBlast(){
+		try {
+			AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File("sfx/blast2.wav"));
+			Clip clip = AudioSystem.getClip();
+	        clip.open(audioIn);
+	        clip.start();			
+		} catch (UnsupportedAudioFileException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (LineUnavailableException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void playShot(){
+		try {
+			AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File("sfx/shot.wav"));
+			Clip clip = AudioSystem.getClip();
+	        clip.open(audioIn);
+	        clip.start();			
+		} catch (UnsupportedAudioFileException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (LineUnavailableException e) {
+			e.printStackTrace();
+		}
 	}
 }

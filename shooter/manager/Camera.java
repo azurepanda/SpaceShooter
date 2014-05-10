@@ -1,7 +1,11 @@
-package shooter;
+package manager;
 
 import java.awt.Dimension;
 import java.awt.Point;
+
+import scene.GameScene;
+import sprite.Background;
+import sprite.Player;
 
 public class Camera {
 	private Player player;
@@ -46,7 +50,7 @@ public class Camera {
 		if(yT > 0) yT = 0;
 		Background b = ((GameScene) sm.getCurrentScene()).getBackground();
 		Dimension s = gp.getSize();
-		if(xT < -b.getX() + s.getSize().width) xT = -b.getX() + s.getSize().width;
-		if(yT < -b.getY() + s.getSize().height) yT = -b.getY() + s.getSize().height;
+		if(xT < -b.getX() + s.getSize().width) xT = (int) -b.getX() + s.getSize().width;
+		if(yT < -b.getY() + s.getSize().height) yT = (int) -b.getY() + s.getSize().height;
 	}
 }

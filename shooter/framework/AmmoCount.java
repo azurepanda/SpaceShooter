@@ -1,4 +1,4 @@
-package shooter;
+package framework;
 
 public class AmmoCount {
 	private int ammoMax;

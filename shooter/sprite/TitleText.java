@@ -1,4 +1,4 @@
-package shooter;
+package sprite;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -6,6 +6,15 @@ import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
 import java.io.File;
 import java.io.IOException;
+
+import manager.GamePanel;
+import manager.KeyboardManager;
+import manager.MouseManager;
+import manager.SceneManager;
+
+import framework.Layer;
+import framework.Sprite;
+
 
 
 public class TitleText extends Sprite{

@@ -1,4 +1,4 @@
-package shooter;
+package manager;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 

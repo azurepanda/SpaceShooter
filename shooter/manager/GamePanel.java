@@ -1,4 +1,5 @@
-package shooter;
+package manager;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -10,23 +11,25 @@ import java.awt.geom.AffineTransform;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import scene.GameScene;
+import framework.Layer;
+import framework.Sprite;
+
 public class GamePanel extends JPanel implements ActionListener{
 
 	private KeyboardManager km;
-	private SceneManager sm;
 	private MouseManager mm;
+	private SceneManager sm;
 	private Timer timer;
-	//private AudioManager am;
-	private final Layer[] order = {Layer.BACK, Layer.PARTICLE, Layer.TOP, Layer.HUD};
+	private final Layer[] order = {Layer.BACK, Layer.PARTICLE, Layer.PROJECTILE, Layer.TOP, Layer.HUD};
 		
 	public GamePanel() {
+		System.setProperty("sun.java2d.opengl","True");
 		mm = new MouseManager();
 		km = new KeyboardManager();
 		sm = new SceneManager();
-		//am = new AudioManager();
-		//Thread thread = new Thread(am);
-		//thread.start();
 		this.addMouseListener(mm);
+		this.addMouseWheelListener(mm);
 		this.addKeyListener(km);
 		this.setFocusable(true);
 		timer = new Timer(16, this);
@@ -34,13 +37,13 @@ public class GamePanel extends JPanel implements ActionListener{
 	}
 
 	@Override
-	public void paint(Graphics g) {
-		super.paint(g); 
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g); 
 		Graphics2D g2d = (Graphics2D) g;	
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		for(Layer l : order){
 			AffineTransform oldTransform = g2d.getTransform();
-			if(!l.equals(Layer.HUD)  && sm.getCurrentScene().getClass().equals(GameScene.class)){
+			if(!l.equals(Layer.HUD) && sm.getCurrentScene().getClass().equals(GameScene.class)){
 				Point trans = ((GameScene) sm.getCurrentScene()).getCamera().getTrans();
 				g2d.translate(trans.x, trans.y);
 			}

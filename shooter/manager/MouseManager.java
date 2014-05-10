@@ -1,11 +1,13 @@
-package shooter;
+package manager;
 
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 
-public class MouseManager implements MouseListener{
+public class MouseManager implements MouseListener, MouseWheelListener{
 
 	private boolean[] buttons;
 	private int xT;
@@ -69,6 +71,11 @@ public class MouseManager implements MouseListener{
 
 	@Override
 	public void mouseExited(MouseEvent e) {
+		
+	}
+
+	@Override
+	public void mouseWheelMoved(MouseWheelEvent e) {
 		
 	}
 }

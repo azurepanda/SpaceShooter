@@ -1,14 +1,21 @@
-package shooter;
+package sprite;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.util.Random;
 
+import manager.GamePanel;
+import manager.KeyboardManager;
+import manager.MouseManager;
+import manager.SceneManager;
+
+import framework.Layer;
+import framework.Sprite;
+
+
 
 public class Particle extends Sprite{
-	private float x;
-	private float y;
 	private float xvel;
 	private float yvel;
 	private float acel;
@@ -17,9 +24,10 @@ public class Particle extends Sprite{
 	private int life;
 	private int dur;
 	private int start;
-	private Ship s;
+	private Sprite s;
+	private int offset;
 	
-	public Particle(Ship s, int key, Layer layer, float x, float y, float xvel, float yvel, float acel, int start, int dur, Color color, Dimension size){
+	public Particle(Sprite s, int key, Layer layer, float x, float y, float xvel, float yvel, float acel, int start, int dur, Color color, Dimension size, int offset){
 		super(key, layer);
 		this.s = s;
 		this.x = x;
@@ -33,6 +41,7 @@ public class Particle extends Sprite{
 		this.color = color;
 		this.size = size;
 		this.life = 0;
+		this.offset = offset;
 	}
 	
 	@Override
@@ -55,8 +64,8 @@ public class Particle extends Sprite{
 			x += xvel;
 			y += yvel;	
 		}else{
-			x = s.getX() + (1-2*rand.nextFloat()) * 20;
-			y = s.getY() + (1-2*rand.nextFloat()) * 20;
+			x = s.getX() + (1-2*rand.nextFloat()) * offset;
+			y = s.getY() + (1-2*rand.nextFloat()) * offset;
 		}
 		if(life > dur) this.remove(sm);
 	}

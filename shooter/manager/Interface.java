@@ -1,4 +1,4 @@
-package shooter;
+package manager;
 import java.awt.EventQueue;
 import java.awt.GraphicsEnvironment;
 

@@ -1,5 +1,15 @@
-package shooter;
+package scene;
 import java.awt.event.KeyEvent;
+
+import manager.GamePanel;
+import manager.KeyboardManager;
+import manager.SceneManager;
+
+import framework.Layer;
+import framework.Scene;
+
+import sprite.Background;
+import sprite.TitleText;
 
 
 public class TitleScene extends Scene{

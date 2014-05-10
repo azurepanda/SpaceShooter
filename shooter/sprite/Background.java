@@ -1,4 +1,4 @@
-package shooter;
+package sprite;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -9,6 +9,17 @@ import java.io.IOException;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+
+import manager.Camera;
+import manager.GamePanel;
+import manager.KeyboardManager;
+import manager.MouseManager;
+import manager.SceneManager;
+
+import framework.Layer;
+import framework.Sprite;
+
+import scene.GameScene;
 
 
 public class Background extends Sprite{
@@ -44,11 +55,13 @@ public class Background extends Sprite{
 		return (int) Math.ceil((float) (gp.getSize().height / 16));
 	}
 	
-	public int getX(){
+	@Override
+	public float getX(){
 		return (xn-1) * 20 + 32; //accounting for overlapping
 	}
 	
-	public int getY(){
+	@Override
+	public float getY(){
 		return (yn-1) * 20 + 32; //accounting for overlapping
 	}
 	
